@@ -1,19 +1,19 @@
 import React from "react";
-import { size } from "lodash";
-import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCompare } from "../store/bookSlice";
+
+import { includes, size } from "lodash";
+import PropTypes from "prop-types";
+
+import { addToCompare, removeFromCompare } from "../store/bookSlice";
 
 /**
  * This component is used for displaying individual book card
  * Parent component is index.js
  * @param {object} book
  * @param {string} book.id
- *
  * @param {object} book.saleInfo
  * @param {boolean} book.saleInfo.isEbook
  * @param {string} book.saleInfo.saleability
- *
  * @param {object} book.volumeInfo
  * @param {string} book.volumeInfo.title
  * @param {string} book.volumeInfo.publisher
@@ -21,7 +21,6 @@ import { addToCompare } from "../store/bookSlice";
  * @param {number} book.volumeInfo.averageRating
  * @param {object} book.volumeInfo.imageLinks
  * @param {string[]} book.volumeInfo.authors
- *
  * @param {string} book.volumeInfo.imageLinks.thumbnail
  *
  * @returns {JSX.Element}
@@ -29,6 +28,8 @@ import { addToCompare } from "../store/bookSlice";
 
 const BookCard = ({ book }) => {
   const dispatch = useDispatch();
+  const toCompare = useSelector((state) => state.book.compareBooks);
+  const isIncluded = includes(toCompare, book.id);
 
   return (
     size(book) > 0 && (
@@ -72,13 +73,23 @@ const BookCard = ({ book }) => {
           {book.saleInfo.saleability}
         </div>
         <div className="p-6">
-          <button
-            className="block w-full rounded-lg bg-blue-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 absolute bottom-4 right-2 text-teal-700"
-            type="button"
-            onClick={() => dispatch(addToCompare(book.id))}
-          >
-            Compare
-          </button>
+          {isIncluded ? (
+            <button
+              className="block w-full rounded-lg bg-blue-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 absolute bottom-4 right-2 text-teal-700"
+              type="button"
+              onClick={() => dispatch(removeFromCompare(book.id))}
+            >
+              Remove
+            </button>
+          ) : (
+            <button
+              className="block w-full rounded-lg bg-blue-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 absolute bottom-4 right-2 text-teal-700"
+              type="button"
+              onClick={() => dispatch(addToCompare(book.id))}
+            >
+              Compare
+            </button>
+          )}
         </div>
       </div>
     )
@@ -89,7 +100,7 @@ export default BookCard;
 
 BookCard.propTypes = {
   book: PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.string.isRequired,
     saleInfo: PropTypes.shape({
       isEbook: PropTypes.bool,
       saleability: PropTypes.string,

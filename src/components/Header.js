@@ -1,5 +1,7 @@
-import { useRouter } from "next/router";
 import React from "react";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+
 import SearchBar from "./SearchBar";
 
 /**
@@ -12,9 +14,11 @@ import SearchBar from "./SearchBar";
 
 const Header = () => {
   const router = useRouter();
+  const toCompare = useSelector((state) => state.book.compareBooks);
+
   return (
     <header className="text-gray-600 body-font">
-      <div className="container mx-auto grid grid-cols-2 p-5 ">
+      <div className="container mx-auto grid grid-cols-2 p-5 max-md:grid-cols-1">
         {/**
          * logo and name
          */}
@@ -50,10 +54,10 @@ const Header = () => {
           {/**
            * compare button
            */}
-          <div>
+          <div className="max-md:-mt-3">
             <button
               onClick={() => router.push("/compare")}
-              className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 ml-4 focus:outline-none hover:bg-gray-200 hover:text-teal-700 rounded text-base mt-4 md:mt-0"
+              className="relative inline-flex items-center bg-gray-200 border-0 py-1 px-3 ml-4 focus:outline-none hover:bg-gray-100 hover:text-teal-700 rounded text-base mt-4 md:mt-0 "
             >
               Compare
               <svg
@@ -67,6 +71,9 @@ const Header = () => {
               >
                 <path d="M5 12h14M12 5l7 7-7 7"></path>
               </svg>
+              <span className=" bg-teal-700 text-white text-xs rounded-full px-1 absolute -right-2 bottom-5">
+                {toCompare.length}
+              </span>
             </button>
           </div>
         </div>
