@@ -7,23 +7,23 @@ const BookCompare = ({ books }) => {
   return (
     <div className="w-full overflow-scroll">
       <table className="container text-sm text-left text-gray-500 dark:text-gray-400 ">
-        <thead className="text-xs text-teal-700 uppercase bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
+        <tbody>
           <tr>
-            <th className="px-6 py-3">{""}</th>
+            <td className="px-6 py-3 font-bold sticky left-0 cursor-pointer text-teal-700 bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
+              Image
+            </td>
             {books.map((book) => (
-              <th key={book.id} className="px-6 py-3">
+              <td key={book.id} className="px-6 py-3">
                 <img
                   src={book.volumeInfo.imageLinks.thumbnail || ""}
                   width="100px"
                   alt={book.volumeInfo.title}
                 />
-              </th>
+              </td>
             ))}
           </tr>
-        </thead>
-        <tbody>
           <tr>
-            <td className="px-6 py-3 font-bold cursor-pointer text-teal-700 bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
+            <td className="px-6 py-3 font-bold sticky left-0 cursor-pointer text-teal-700 bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
               Title
             </td>
             {books.map((book) => (
@@ -34,7 +34,7 @@ const BookCompare = ({ books }) => {
           </tr>
 
           <tr>
-            <td className="px-6 py-3 font-bold cursor-pointer text-teal-700 bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
+            <td className="px-6 py-3 sticky left-0  font-bold cursor-pointer text-teal-700 bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
               Authors
             </td>
             {books.map((book) => (
@@ -45,7 +45,7 @@ const BookCompare = ({ books }) => {
           </tr>
 
           <tr>
-            <td className="px-6 py-3 font-bold cursor-pointer text-teal-700 bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
+            <td className="px-6  py-3 sticky left-0  font-bold cursor-pointer text-teal-700 bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
               Categories
             </td>
             {books.map((book) => (
@@ -58,7 +58,7 @@ const BookCompare = ({ books }) => {
           </tr>
 
           <tr>
-            <td className="px-6 py-3 font-bold cursor-pointer text-teal-700 bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
+            <td className="px-6 py-3 sticky left-0  font-bold cursor-pointer text-teal-700 bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
               Publisher
             </td>
             {books.map((book) => (
@@ -69,7 +69,7 @@ const BookCompare = ({ books }) => {
           </tr>
 
           <tr>
-            <td className="px-6 py-3 font-bold cursor-pointer text-teal-700 bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
+            <td className="px-6 py-3 sticky left-0  font-bold cursor-pointer text-teal-700 bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
               Page
             </td>
             {books.map((book) => (
@@ -80,7 +80,7 @@ const BookCompare = ({ books }) => {
           </tr>
 
           <tr>
-            <td className="px-6 py-3 font-bold cursor-pointer text-teal-700 bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
+            <td className="px-6 py-3 sticky left-0  font-bold cursor-pointer text-teal-700 bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
               Rating
             </td>
             {books.map((book) => (
@@ -93,7 +93,7 @@ const BookCompare = ({ books }) => {
           </tr>
 
           <tr>
-            <td className="px-6 py-3 font-bold cursor-pointer text-teal-700 bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
+            <td className="px-6 py-3 sticky left-0  font-bold cursor-pointer text-teal-700 bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
               Price
             </td>
             {books.map((book) => (
@@ -106,7 +106,7 @@ const BookCompare = ({ books }) => {
           </tr>
 
           <tr>
-            <td className="px-6 py-3 font-bold cursor-pointer text-teal-700 uppercase bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
+            <td className="px-6 py-3 sticky left-0  font-bold cursor-pointer text-teal-700 uppercase bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
               Actions
             </td>
             {books.map((book) => (
