@@ -19,6 +19,7 @@ const useSearch = () => {
    * and updates the router query with the search term and page index.
    * @param {Object} data - The form data containing the search term.
    */
+
   const onSubmit = (data) => {
     console.log(data);
 

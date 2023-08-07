@@ -106,14 +106,14 @@ const BookCompare = ({ books }) => {
           </tr>
 
           <tr>
-            <td className="px-6 py-3 sticky left-0  font-bold cursor-pointer text-teal-700 uppercase bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
+            <td className="px-6 py-3 sticky left-0  font-bold cursor-pointer text-teal-700  bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
               Actions
             </td>
             {books.map((book) => (
               <td
                 key={book.id}
                 onClick={() => dispatch(removeFromCompare(book.id))}
-                className="px-6 py-3 font-base cursor-pointer text-teal-700 uppercase bg-teal-50 dark:bg-teal-700 dark:text-teal-400"
+                className="px-6 py-3 font-base cursor-pointer text-teal-700 bg-teal-50 dark:bg-teal-700 dark:text-teal-400"
               >
                 Remove
               </td>

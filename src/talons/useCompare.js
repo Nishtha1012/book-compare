@@ -9,8 +9,9 @@ import { GET_BOOK } from "../gql/queries";
 
 /**
  * A custom hook to handle book comparison functionality.
- * @returns {Array} An array of object containing compared books, router, and dispatch function.
- * @returns instance of router
+ * @returns {object}
+ * - {Array} An array of object containing compared books, router, and dispatch function.
+ * - instance of router
  */
 
 const useCompare = () => {

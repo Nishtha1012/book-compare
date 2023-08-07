@@ -17,7 +17,7 @@ import PropTypes from "prop-types";
 
 const Paginate = ({ page, handleChange }) => {
   return (
-    <Stack spacing={2} className="max-sm:mb-9 py-4">
+    <Stack spacing={2} className="max-sm:mb-9 py-4 dark:text-white">
       <Pagination
         count={10}
         page={page}

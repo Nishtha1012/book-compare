@@ -4,9 +4,10 @@ import { addToCompare, removeFromCompare } from "../store/bookSlice";
 
 /**
  * A custom hook to handle book comparison functionality.
- * @returns {Array} toCompare -  An array containing ids of books to compare .
- * @returns {Function} handleRemoveCompare - function to remove id in to compare array
- * @returns {Function} handleAddCompare - function to add id in to compare array
+ * @returns {object}
+ * - {Array} toCompare -  An array containing ids of books to compare .
+ * - handleRemoveCompare - function to remove id in to compare array
+ * - handleAddCompare - function to add id in to compare array
  */
 
 const useBookCard = () => {

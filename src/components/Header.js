@@ -17,7 +17,7 @@ const Header = () => {
   const toCompare = useSelector((state) => state.book.compareBooks);
 
   return (
-    <header className="text-gray-600 body-font">
+    <header className="text-gray-600 body-font dark:text-white">
       <div className="container mx-auto grid grid-cols-2 p-5 max-md:grid-cols-1">
         {/**
          * logo and name

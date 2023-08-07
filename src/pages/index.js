@@ -13,22 +13,7 @@ import Filters from "../components/Filters";
 
 /**
  * This component is used for Listing all books
- * also displaus filters dropdown at top and pagination at bottom of page
- *
- * @param {object} book
- * @param {string} book.id
- * @param {object} book.saleInfo
- * @param {boolean} book.saleInfo.isEbook
- * @param {string} book.saleInfo.saleability
- * @param {object} book.volumeInfo
- * @param {string} book.volumeInfo.title
- * @param {string} book.volumeInfo.publisher
- * @param {string} book.volumeInfo.publishedDate
- * @param {number} book.volumeInfo.averageRating
- * @param {object} book.volumeInfo.imageLinks
- * @param {string[]} book.volumeInfo.authors
- * @param {string} book.volumeInfo.imageLinks.thumbnail
- *
+ * also displays filters dropdown at top and pagination at bottom of page
  * @returns {JSX.Element}
  */
 

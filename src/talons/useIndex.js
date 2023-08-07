@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useRouter } from "next/router";
 
 /**
@@ -24,18 +24,21 @@ const useIndex = () => {
    * @param {Object} event - The event object containing information about the page change.
    * @param {number} value - The new page index value.
    */
-  const handleChange = (event, value) => {
-    console.log(value);
+  const handleChange = useCallback(
+    (event, value) => {
+      console.log(value);
 
-    // Update the 'page' state with the new index value
-    setPage(value);
+      // Update the 'page' state with the new index value
+      setPage(value);
 
-    // Update the router query with the new index and term values
-    router.push({
-      pathname: "/",
-      query: { term: term, index: value },
-    });
-  };
+      // Update the router query with the new index and term values
+      router.push({
+        pathname: "/",
+        query: { term: term, index: value },
+      });
+    },
+    [term, index, page]
+  );
 
   // Return an object containing the index-related state and functions
   return {

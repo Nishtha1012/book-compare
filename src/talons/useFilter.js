@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 /**
  * A custom hook to handle filtering functionality.
@@ -50,7 +50,7 @@ const useFilter = () => {
    * It updates the router query to remove the filter parameter.
    * It also clears the 'filters' state.
    */
-  const clearfilter = () => {
+  const clearfilter = useCallback(() => {
     // Update the router query to remove the 'filter' parameter
     router.push({
       pathname: "/",
@@ -59,7 +59,7 @@ const useFilter = () => {
 
     // Clear the 'filters' state
     setfilter();
-  };
+  }, [term]);
 
   // Return an object containing the filter-related state and functions
   return {
