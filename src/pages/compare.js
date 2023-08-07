@@ -4,6 +4,7 @@ import { size } from "lodash";
 
 import useCompare from "../talons/useCompare";
 import CompareRow from "../components/CompareRow";
+import Head from "next/head";
 
 /**
  * Displays compare table for all the books that are added to compare
@@ -16,6 +17,9 @@ const compare = () => {
   const { compared, router } = useCompare();
   return (
     <>
+      <Head>
+        <title>Books | Compare</title>
+      </Head>
       {/**back button */}
       <div
         className="bg-slate-200 inline-block p-3 rounded font-medium hover:cursor-pointer justify-end ms-10 max-sm:ms-5"

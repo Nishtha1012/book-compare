@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { useLazyQuery } from "@apollo/client";
@@ -9,7 +9,8 @@ import { GET_BOOK } from "../gql/queries";
 
 /**
  * A custom hook to handle book comparison functionality.
- * @returns {Object} An object containing compared books, router, and dispatch function.
+ * @returns {Array} An array of object containing compared books, router, and dispatch function.
+ * @returns instance of router
  */
 
 const useCompare = () => {
@@ -30,7 +31,7 @@ const useCompare = () => {
    * This function will be called when the list of books to compare changes.
    * It fetches book data for the selected books and updates the 'compared' state.
    */
-  const compareBooks = async () => {
+  const compareBooks = useCallback(async () => {
     const { data } = await fetchBooks({
       variables: {
         id: toCompare,
@@ -39,14 +40,14 @@ const useCompare = () => {
 
     // Update the 'compared' state with the fetched book data
     setcompared(data?.bookByID);
-  };
+  }, [toCompare]);
 
   // Call the compareBooks function whenever the list of books to compare changes
   useEffect(() => {
     compareBooks();
   }, [toCompare]);
 
-  // Return an object containing the compared books, router
+  // Return an array containing the compared books, router
   return {
     compared,
     router,

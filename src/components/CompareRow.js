@@ -36,15 +36,23 @@ const CompareRow = ({ book }) => {
     size(book) > 0 && (
       <tr className="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
         <td>
-          <img
-            src={
-              book.volumeInfo.imageLinks
-                ? book.volumeInfo.imageLinks.thumbnail
-                : "No Image Found"
-            }
-            width="100px"
-            alt={book.volumeInfo.title}
-          />
+          {book.volumeInfo.imageLinks ? (
+            <img
+              src={
+                book.volumeInfo.imageLinks
+                  ? book.volumeInfo.imageLinks.thumbnail
+                  : ""
+              }
+              width="100px"
+              alt={book.volumeInfo.title}
+            />
+          ) : (
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"
+              width="100px"
+              alt={book.volumeInfo.title}
+            />
+          )}
         </td>
         <td className="px-6 py-4">{book.volumeInfo.title}</td>
         <td className="px-6 py-4">

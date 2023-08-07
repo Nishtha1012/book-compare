@@ -1,10 +1,9 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 import { includes, size } from "lodash";
 import PropTypes from "prop-types";
 
-import { addToCompare, removeFromCompare } from "../store/bookSlice";
+import useBookCard from "../talons/useBookCard";
 
 /**
  * This component is used for displaying individual book card
@@ -27,25 +26,34 @@ import { addToCompare, removeFromCompare } from "../store/bookSlice";
  */
 
 const BookCard = ({ book }) => {
-  const dispatch = useDispatch();
-  const toCompare = useSelector((state) => state.book.compareBooks);
+  const { toCompare, handleAddCompare, handleRemoveCompare } = useBookCard();
   const isIncluded = includes(toCompare, book.id);
 
   return (
     size(book) > 0 && (
       <div className="relative flex  flex-col rounded-xl bg-slate-100 bg-clip-border text-gray-700 shadow-xl my-3 w-72 mx-auto hover:shadow-2xl">
         <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-clip-border text-gray-700">
-          <img
-            src={
-              book.volumeInfo.imageLinks
-                ? book.volumeInfo.imageLinks.thumbnail
-                : ""
-            }
-            alt={book.volumeInfo.title}
-            className="w-40 h-48 mx-auto"
-            width={160}
-            height={208}
-          />
+          {book.volumeInfo.imageLinks ? (
+            <img
+              src={
+                book.volumeInfo.imageLinks
+                  ? book.volumeInfo.imageLinks.thumbnail
+                  : ""
+              }
+              alt={book.volumeInfo.title}
+              className="w-40 h-48 mx-auto"
+              width={160}
+              height={208}
+            />
+          ) : (
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"
+              alt={book.volumeInfo.title}
+              className="w-40 h-48 mx-auto"
+              width={160}
+              height={208}
+            />
+          )}
         </div>
         <div className="p-6">
           <p className="block font-sans text-base font-medium leading-relaxed text-blue-gray-900 antialiased mb-2">
@@ -77,7 +85,7 @@ const BookCard = ({ book }) => {
             <button
               className="block w-full rounded-lg bg-blue-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 absolute bottom-4 right-2 text-teal-700"
               type="button"
-              onClick={() => dispatch(removeFromCompare(book.id))}
+              onClick={() => handleRemoveCompare(book.id)}
             >
               Remove
             </button>
@@ -85,7 +93,7 @@ const BookCard = ({ book }) => {
             <button
               className="block w-full rounded-lg bg-blue-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 absolute bottom-4 right-2 text-teal-700"
               type="button"
-              onClick={() => dispatch(addToCompare(book.id))}
+              onClick={() => handleAddCompare(book.id)}
             >
               Compare
             </button>

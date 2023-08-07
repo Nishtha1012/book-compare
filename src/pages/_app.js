@@ -11,6 +11,9 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { CircularProgress } from "@mui/material";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 /**
  * main component that renders all the component
  * defines layouts for components
@@ -52,7 +55,10 @@ function MyApp({ Component, pageProps }) {
               <CircularProgress className="mx-auto" />
             </div>
           ) : (
-            <Component {...pageProps} />
+            <>
+              <Component {...pageProps} />
+              <ToastContainer />
+            </>
           )}
         </PersistGate>
       </Provider>
