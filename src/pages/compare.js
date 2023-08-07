@@ -42,52 +42,12 @@ const compare = () => {
           />
         </svg>
       </div>
-      {loading && <CircularProgress />}
       {size(compared) > 0 ? (
-        // <>
-        //   <div className="container mx-auto relative overflow-x-auto shadow-md sm:rounded-lg">
-        //     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        //       {/**table headings*/}
-        //       <thead className="text-xs text-teal-700 uppercase bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
-        //         <tr>
-        //           <th scope="col" className="px-6 py-3"></th>
-        //           <th scope="col" className="px-6 py-3">
-        //             Name
-        //           </th>
-        //           <th scope="col" className="px-6 py-3">
-        //             Pages
-        //           </th>
-        //           <th scope="col" className="px-6 py-3">
-        //             Author
-        //           </th>
-        //           <th scope="col" className="px-6 py-3">
-        //             Publisher
-        //           </th>
-        //           <th scope="col" className="px-6 py-3">
-        //             Average Rating
-        //           </th>
-
-        //           <th scope="col" className="px-6 py-3">
-        //             Category
-        //           </th>
-        //           <th scope="col" className="px-6 py-3">
-        //             Price
-        //           </th>
-        //           <th scope="col" className="px-6 py-3">
-        //             Action
-        //           </th>
-        //         </tr>
-        //       </thead>
-        //       <tbody>
-        //         {/** all books to compare */}
-        //         {compared.map((book) => (
-        //           <CompareRow book={book} key={book.id} />
-        //         ))}
-        //       </tbody>
-        //     </table>
-        //   </div>
-        // </>
         <BookCompare books={compared} />
+      ) : loading ? (
+        <div className="flex items-center justify-center">
+          <CircularProgress className="m-auto" />
+        </div>
       ) : (
         <h3 className="text-center">No Books to compare!!</h3>
       )}
@@ -96,3 +56,47 @@ const compare = () => {
 };
 
 export default compare;
+
+// <>
+//   <div className="container mx-auto relative overflow-x-auto shadow-md sm:rounded-lg">
+//     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+//       {/**table headings*/}
+//       <thead className="text-xs text-teal-700 uppercase bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
+//         <tr>
+//           <th scope="col" className="px-6 py-3"></th>
+//           <th scope="col" className="px-6 py-3">
+//             Name
+//           </th>
+//           <th scope="col" className="px-6 py-3">
+//             Pages
+//           </th>
+//           <th scope="col" className="px-6 py-3">
+//             Author
+//           </th>
+//           <th scope="col" className="px-6 py-3">
+//             Publisher
+//           </th>
+//           <th scope="col" className="px-6 py-3">
+//             Average Rating
+//           </th>
+
+//           <th scope="col" className="px-6 py-3">
+//             Category
+//           </th>
+//           <th scope="col" className="px-6 py-3">
+//             Price
+//           </th>
+//           <th scope="col" className="px-6 py-3">
+//             Action
+//           </th>
+//         </tr>
+//       </thead>
+//       <tbody>
+//         {/** all books to compare */}
+//         {compared.map((book) => (
+//           <CompareRow book={book} key={book.id} />
+//         ))}
+//       </tbody>
+//     </table>
+//   </div>
+// </>
