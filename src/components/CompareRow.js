@@ -1,48 +1,43 @@
 import React from "react";
-
 import { size } from "lodash";
-
 import { useDispatch } from "react-redux";
 import { removeFromCompare } from "../store/bookSlice";
 import PropTypes from "prop-types";
 
 /**
- * This component is used for displaying individual book row in compare table
- * also provides a button to remove the book from compare
- * Parent component is compare.js
+ * CompareRow Component
  *
- * @param {object} book
- * @param {string} book.id
- * @param {object} book.saleInfo
- * @param {object} book.saleInfo.listPrice
- * @param {number} book.saleInfo.listPrice.amount
- * @param {object} book.volumeInfo
- * @param {string} book.volumeInfo.title
- * @param {string} book.volumeInfo.publisher
- * @param {number} book.volumeInfo.averageRating
- * @param {object} book.volumeInfo.imageLinks
- * @param {string} book.volumeInfo.imageLinks.thumbnail
- * @param {string[]} book.volumeInfo.categories
- * @param {string[]} book.volumeInfo.authors
- * @param {number} book.volumeInfo.pageCount
+ * Displays an individual book row in the compare table and provides a button to remove the book from compare.
  *
+ * @param {object} book - The book object to display in the row.
+ * @param {string} book.id - The unique identifier of the book.
+ * @param {object} book.saleInfo - Information about the book's sale.
+ * @param {object} book.saleInfo.listPrice - The list price of the book.
+ * @param {number} book.saleInfo.listPrice.amount - The amount of the list price.
+ * @param {object} book.volumeInfo - Information about the book's volume.
+ * @param {string} book.volumeInfo.title - The title of the book.
+ * @param {string} book.volumeInfo.publisher - The publisher of the book.
+ * @param {number} book.volumeInfo.averageRating - The average rating of the book.
+ * @param {object} book.volumeInfo.imageLinks - Links to images of the book.
+ * @param {string} book.volumeInfo.imageLinks.thumbnail - The URL of the book's thumbnail image.
+ * @param {string[]} book.volumeInfo.categories - Categories or genres of the book.
+ * @param {string[]} book.volumeInfo.authors - Authors of the book.
+ * @param {number} book.volumeInfo.pageCount - Number of pages in the book.
  *
- * @returns {JSX.Element}
+ * @returns {JSX.Element} - The JSX element representing the CompareRow component.
  */
-
 const CompareRow = ({ book }) => {
   const dispatch = useDispatch();
+
+  // Render the table row only if the book object is not empty
   return (
     size(book) > 0 && (
       <tr className="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
         <td>
+          {/* Display book thumbnail image or a default image */}
           {book.volumeInfo.imageLinks ? (
             <img
-              src={
-                book.volumeInfo.imageLinks
-                  ? book.volumeInfo.imageLinks.thumbnail
-                  : ""
-              }
+              src={book.volumeInfo.imageLinks.thumbnail || ""}
               width="100px"
               alt={book.volumeInfo.title}
             />
@@ -54,34 +49,37 @@ const CompareRow = ({ book }) => {
             />
           )}
         </td>
+        {/* Display book title */}
         <td className="px-6 py-4">{book.volumeInfo.title}</td>
+        {/* Display page count */}
         <td className="px-6 py-4">
           {book.volumeInfo.pageCount ? book.volumeInfo.pageCount : "-"}
         </td>
+        {/* Display author */}
         <td className="px-6 py-4">
           {book.volumeInfo.authors[0] ? book.volumeInfo.authors[0] : "-"}
         </td>
-
+        {/* Display publisher */}
         <td className="px-6 py-4">
           {book.volumeInfo.publisher ? book.volumeInfo.publisher : "-"}
         </td>
-
+        {/* Display average rating */}
         <td className="px-6 py-4">
           {book.volumeInfo.averageRating
             ? book.volumeInfo.averageRating
             : "No Ratings"}
         </td>
-
+        {/* Display category */}
         <td className="px-6 py-4">
           {book.volumeInfo.categories ? book.volumeInfo.categories[0] : "-"}
         </td>
-
+        {/* Display list price or "Not For Sale" */}
         <td className="px-6 py-4">
           {book.saleInfo.listPrice
             ? " Rs. " + book.saleInfo.listPrice.amount
             : "Not For Sale"}
         </td>
-
+        {/* Display 'Remove' button */}
         <td className="px-6 py-4">
           <span
             className="font-medium cursor-pointer text-teal-600 dark:text-teal-500 hover:underline"
@@ -97,6 +95,7 @@ const CompareRow = ({ book }) => {
 
 export default CompareRow;
 
+// PropTypes for type checking and documenting the expected prop structure
 CompareRow.propTypes = {
   book: PropTypes.shape({
     id: PropTypes.string.isRequired,

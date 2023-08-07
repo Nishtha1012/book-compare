@@ -5,6 +5,8 @@ import { size } from "lodash";
 import useCompare from "../talons/useCompare";
 import CompareRow from "../components/CompareRow";
 import Head from "next/head";
+import BookCompare from "../components/BookCompare";
+import { CircularProgress } from "@material-ui/core";
 
 /**
  * Displays compare table for all the books that are added to compare
@@ -14,7 +16,8 @@ import Head from "next/head";
  */
 
 const compare = () => {
-  const { compared, router } = useCompare();
+  const { compared, router, loading } = useCompare();
+  console.log(compared);
   return (
     <>
       <Head>
@@ -39,51 +42,52 @@ const compare = () => {
           />
         </svg>
       </div>
+      {loading && <CircularProgress />}
       {size(compared) > 0 ? (
-        <>
-          <div className="container mx-auto relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-              {/**table headings */}
+        // <>
+        //   <div className="container mx-auto relative overflow-x-auto shadow-md sm:rounded-lg">
+        //     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        //       {/**table headings*/}
+        //       <thead className="text-xs text-teal-700 uppercase bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
+        //         <tr>
+        //           <th scope="col" className="px-6 py-3"></th>
+        //           <th scope="col" className="px-6 py-3">
+        //             Name
+        //           </th>
+        //           <th scope="col" className="px-6 py-3">
+        //             Pages
+        //           </th>
+        //           <th scope="col" className="px-6 py-3">
+        //             Author
+        //           </th>
+        //           <th scope="col" className="px-6 py-3">
+        //             Publisher
+        //           </th>
+        //           <th scope="col" className="px-6 py-3">
+        //             Average Rating
+        //           </th>
 
-              <thead className="text-xs text-teal-700 uppercase bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
-                <tr>
-                  <th scope="col" className="px-6 py-3"></th>
-                  <th scope="col" className="px-6 py-3">
-                    Name
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Pages
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Author
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Publisher
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Average Rating
-                  </th>
-
-                  <th scope="col" className="px-6 py-3">
-                    Category
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Price
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Action
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {/** all books to compare */}
-                {compared.map((book) => (
-                  <CompareRow book={book} key={book.id} />
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </>
+        //           <th scope="col" className="px-6 py-3">
+        //             Category
+        //           </th>
+        //           <th scope="col" className="px-6 py-3">
+        //             Price
+        //           </th>
+        //           <th scope="col" className="px-6 py-3">
+        //             Action
+        //           </th>
+        //         </tr>
+        //       </thead>
+        //       <tbody>
+        //         {/** all books to compare */}
+        //         {compared.map((book) => (
+        //           <CompareRow book={book} key={book.id} />
+        //         ))}
+        //       </tbody>
+        //     </table>
+        //   </div>
+        // </>
+        <BookCompare books={compared} />
       ) : (
         <h3 className="text-center">No Books to compare!!</h3>
       )}

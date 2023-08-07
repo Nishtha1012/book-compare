@@ -51,6 +51,7 @@ const useCompare = () => {
   return {
     compared,
     router,
+    loading,
   };
 };
 

@@ -1,11 +1,14 @@
-import { size } from "lodash";
 import Head from "next/head";
-import BookCard from "../components/BookCard";
+
+import PropTypes from "prop-types";
+import { size } from "lodash";
+
 import { client } from "../gql/apolloClient";
 import { GET_ALL_BOOKS } from "../gql/queries";
-import PropTypes from "prop-types";
-import Paginate from "../components/Paginate";
+
 import useIndex from "../talons/useIndex";
+import BookCard from "../components/BookCard";
+import Paginate from "../components/Paginate";
 import Filters from "../components/Filters";
 
 /**
