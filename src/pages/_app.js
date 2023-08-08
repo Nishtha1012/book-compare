@@ -13,6 +13,7 @@ import { CircularProgress } from "@mui/material";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Wrapper from "../components/wrapper";
 
 /**
  * main component that renders all the component
@@ -46,22 +47,19 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ApolloProvider client={client}>
-      <Provider store={store}>
-        <PersistGate persistor={persistedStore}>
-          <Header />
-
-          {loading ? (
-            <div className="mx-auto flex items-center justify-center mt-5">
-              <CircularProgress className="mx-auto" />
-            </div>
-          ) : (
-            <>
-              <Component {...pageProps} />
-              <ToastContainer />
-            </>
-          )}
-        </PersistGate>
-      </Provider>
+      {loading ? (
+        <div className="mx-auto flex items-center justify-center mt-5">
+          <CircularProgress className="mx-auto" />
+        </div>
+      ) : (
+        <Wrapper>
+          <>
+            <Header />
+            <Component {...pageProps} />
+            <ToastContainer />
+          </>
+        </Wrapper>
+      )}
     </ApolloProvider>
   );
 }
