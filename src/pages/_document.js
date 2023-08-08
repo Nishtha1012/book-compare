@@ -7,6 +7,7 @@ export default function Document() {
         <title>Books | Search</title>
         <meta name="description" content="Books search app" />
       </Head>
+      <title>Book Search</title>
       <body>
         <Main />
         <NextScript />
