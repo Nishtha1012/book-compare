@@ -42,8 +42,8 @@ const BookCard = ({ book }) => {
               src={book.volumeInfo.imageLinks.thumbnail || ""}
               alt={book.volumeInfo.title}
               className="w-32 h-40 mx-auto"
-              width={160}
-              height={208}
+              width={120}
+              height={160}
               priority
             />
           ) : (
@@ -51,8 +51,8 @@ const BookCard = ({ book }) => {
               src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"
               alt={book.volumeInfo.title}
               className="w-32 h-40 mx-auto"
-              width={160}
-              height={208}
+              width={120}
+              height={160}
               priority
             />
           )}
