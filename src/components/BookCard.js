@@ -44,6 +44,7 @@ const BookCard = ({ book }) => {
               className="w-32 h-40 mx-auto"
               width={120}
               height={160}
+              priority={true}
             />
           ) : (
             <img
@@ -52,6 +53,7 @@ const BookCard = ({ book }) => {
               className="w-32 h-40 mx-auto"
               width={120}
               height={160}
+              // priority={true}
             />
           )}
         </div>
