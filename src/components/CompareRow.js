@@ -42,6 +42,7 @@ const CompareRow = ({ book }) => {
               width={100}
               height={120}
               alt={book.volumeInfo.title}
+              priority
             />
           ) : (
             <Image
@@ -49,6 +50,7 @@ const CompareRow = ({ book }) => {
               width={100}
               height={120}
               alt={book.volumeInfo.title}
+              priority
             />
           )}
         </td>
