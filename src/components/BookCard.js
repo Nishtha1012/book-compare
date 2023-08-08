@@ -41,7 +41,7 @@ const BookCard = ({ book }) => {
             <Image
               src={book.volumeInfo.imageLinks.thumbnail || ""}
               alt={book.volumeInfo.title}
-              className="w-40 h-48 mx-auto"
+              className="w-32 h-40 mx-auto"
               width={160}
               height={208}
             />
@@ -49,7 +49,7 @@ const BookCard = ({ book }) => {
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"
               alt={book.volumeInfo.title}
-              className="w-40 h-48 mx-auto"
+              className="w-32 h-40 mx-auto"
               width={160}
               height={208}
             />
