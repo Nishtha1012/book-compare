@@ -8,7 +8,7 @@ const Wrapper = ({ children }) => {
   } else {
     return (
       <Provider store={store}>
-        <PersistGate persistor={persistedStore}>{children}</PersistGate>
+        <PersistGate persistor={persistedStore}>{() => children}</PersistGate>
       </Provider>
     );
   }

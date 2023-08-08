@@ -41,18 +41,18 @@ const BookCard = ({ book }) => {
             <Image
               src={book.volumeInfo.imageLinks.thumbnail || ""}
               alt={book.volumeInfo.title}
-              className="w-32 h-40 mx-auto"
-              width={120}
-              height={160}
+              width={250}
+              height={250}
+              className="object-contain w-full h-full"
               priority={true}
             />
           ) : (
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"
               alt={book.volumeInfo.title}
-              className="w-32 h-40 mx-auto"
-              width={120}
-              height={160}
+              width={250}
+              height={250}
+              className="object-contain w-full h-full"
               // priority={true}
             />
           )}
@@ -73,7 +73,7 @@ const BookCard = ({ book }) => {
           className={
             // Set the background color based on the book's saleability status
             "absolute items-center inline-block text-white text-xs px-2 py-1 right-0 rounded-tr-lg rounded-bl-lg shadow-xl " +
-            (book.saleInfo.saleability === "NOT_FOR_SALE" ? "bg-red-500" : "") +
+            (book.saleInfo.saleability === "NOT_FOR_SALE" ? "bg-red-700" : "") +
             (book.saleInfo.saleability === "FOR_SALE" ? "bg-green-700" : "") +
             (book.saleInfo.saleability === "FOR_SALE_AND_RENTAL"
               ? "bg-yellow-600"

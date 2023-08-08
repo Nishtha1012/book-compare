@@ -25,12 +25,13 @@ const compare = () => {
   return (
     <>
       <Head>
-        <title>Books | Compare</title>
+        <title>Books | Search</title>
+        <meta name="description" content="Books comparison" />
       </Head>
       {/**back button */}
       <div
         className="bg-slate-200 inline-block p-3 rounded font-medium hover:cursor-pointer justify-end ms-10 max-sm:ms-5"
-        onClick={() => router.back()}
+        onClick={() => router.push("/")}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +50,7 @@ const compare = () => {
       {size(compared) > 0 ? (
         <>
           <div className="container mx-auto relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <table className="w-full text-sm text-left text-gray-700 dark:text-gray-400">
               {/**table headings*/}
               <thead className="text-xs text-teal-700 uppercase bg-teal-50 dark:bg-teal-700 dark:text-teal-400">
                 <tr>

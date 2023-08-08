@@ -1,6 +1,5 @@
 import Head from "next/head";
 
-import PropTypes from "prop-types";
 import { size } from "lodash";
 
 import { client } from "../gql/apolloClient";
@@ -92,27 +91,3 @@ export async function getServerSideProps(context) {
     };
   }
 }
-
-/** prop types */
-const bookShape = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  saleInfo: PropTypes.shape({
-    isEbook: PropTypes.bool,
-    saleability: PropTypes.string,
-  }),
-  volumeInfo: PropTypes.shape({
-    title: PropTypes.string,
-    publisher: PropTypes.string,
-    publishedDate: PropTypes.string,
-    averageRating: PropTypes.number,
-    imageLinks: PropTypes.shape({
-      thumbnail: PropTypes.string,
-    }),
-    authors: PropTypes.arrayOf(PropTypes.string),
-  }),
-});
-
-// PropTypes definition for the Home component
-Home.propTypes = {
-  books: PropTypes.arrayOf(bookShape), // Use `arrayOf` to validate an array of bookShape
-};

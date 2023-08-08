@@ -39,17 +39,19 @@ const CompareRow = ({ book }) => {
           {book.volumeInfo.imageLinks ? (
             <Image
               src={book.volumeInfo.imageLinks.thumbnail || ""}
-              width={100}
-              height={120}
               alt={book.volumeInfo.title}
+              width={250}
+              height={250}
+              className="object-contain w-full h-full"
               priority
             />
           ) : (
             <Image
               src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"
-              width={100}
-              height={120}
               alt={book.volumeInfo.title}
+              width={250}
+              height={250}
+              className="object-contain w-full h-full"
               priority
             />
           )}
@@ -87,7 +89,7 @@ const CompareRow = ({ book }) => {
         {/* Display 'Remove' button */}
         <td className="px-6 py-4">
           <span
-            className="font-medium cursor-pointer text-teal-600 dark:text-teal-500 hover:underline"
+            className="font-medium cursor-pointer text-teal-700 dark:text-teal-500 hover:underline"
             onClick={() => dispatch(removeFromCompare(book.id))}
           >
             Remove
