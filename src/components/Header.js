@@ -23,7 +23,7 @@ const Header = () => {
          * logo and name
          */}
         <div>
-          <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+          <span className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -40,7 +40,7 @@ const Header = () => {
               <polyline points="10 2 10 10 13 7 16 10 16 2" />
             </svg>
             <span className="ml-3 text-xl">Books</span>
-          </a>
+          </span>
         </div>
 
         {/**
