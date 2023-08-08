@@ -2,6 +2,7 @@ import React from "react";
 import { includes, size } from "lodash";
 import PropTypes from "prop-types";
 import useBookCard from "../talons/useBookCard";
+import Image from "next/image";
 
 /**
  * This component is used for displaying individual book card
@@ -37,7 +38,7 @@ const BookCard = ({ book }) => {
         <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-clip-border text-gray-700">
           {/* Display the book's thumbnail image, or a default image if not available */}
           {book.volumeInfo.imageLinks ? (
-            <img
+            <Image
               src={book.volumeInfo.imageLinks.thumbnail || ""}
               alt={book.volumeInfo.title}
               className="w-40 h-48 mx-auto"

@@ -3,6 +3,7 @@ import { size } from "lodash";
 import { useDispatch } from "react-redux";
 import { removeFromCompare } from "../store/bookSlice";
 import PropTypes from "prop-types";
+import Image from "next/image";
 
 /**
  * CompareRow Component
@@ -36,15 +37,17 @@ const CompareRow = ({ book }) => {
         <td>
           {/* Display book thumbnail image or a default image */}
           {book.volumeInfo.imageLinks ? (
-            <img
+            <Image
               src={book.volumeInfo.imageLinks.thumbnail || ""}
-              width="100px"
+              width={100}
+              height={120}
               alt={book.volumeInfo.title}
             />
           ) : (
-            <img
+            <Image
               src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"
-              width="100px"
+              width={100}
+              height={120}
               alt={book.volumeInfo.title}
             />
           )}
