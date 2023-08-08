@@ -6,6 +6,7 @@ import { useLazyQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 
 import { GET_BOOK } from "../gql/queries";
+import { createChainedFunction } from "@mui/material";
 
 /**
  * A custom hook to handle book comparison functionality.
@@ -38,7 +39,6 @@ const useCompare = () => {
         id: toCompare,
       },
     });
-
     // Update the 'compared' state with the fetched book data
     setcompared(data?.bookByID);
   }, [toCompare]);
@@ -53,6 +53,7 @@ const useCompare = () => {
     compared,
     router,
     loading,
+    error,
   };
 };
 

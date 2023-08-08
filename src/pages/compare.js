@@ -7,6 +7,7 @@ import CompareRow from "../components/CompareRow";
 import Head from "next/head";
 import BookCompare from "../components/BookCompare";
 import { CircularProgress } from "@material-ui/core";
+import ErrorPage from "../components/ErrorPage";
 
 /**
  * Displays compare table for all the books that are added to compare
@@ -16,8 +17,11 @@ import { CircularProgress } from "@material-ui/core";
  */
 
 const compare = () => {
-  const { compared, router, loading } = useCompare();
-  console.log(compared);
+  const { compared, router, loading, error } = useCompare();
+
+  if (error?.message === "AxiosError: Request failed with status code 429")
+    return <ErrorPage />;
+
   return (
     <>
       <Head>

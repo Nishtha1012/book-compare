@@ -72,7 +72,7 @@ const Header = () => {
                 <path d="M5 12h14M12 5l7 7-7 7"></path>
               </svg>
               <span className=" bg-teal-700 text-white text-xs rounded-full px-1 absolute -right-2 bottom-5">
-                {toCompare.length}
+                {toCompare.length ? toCompare.length : 0}
               </span>
             </button>
           </div>

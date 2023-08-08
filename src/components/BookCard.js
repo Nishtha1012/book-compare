@@ -23,6 +23,7 @@ import useBookCard from "../talons/useBookCard";
  *
  * @returns {JSX.Element} - The JSX element representing the individual book card
  */
+
 const BookCard = ({ book }) => {
   // Get the functions and state from the custom hook "useBookCard"
   const { toCompare, handleAddCompare, handleRemoveCompare } = useBookCard();

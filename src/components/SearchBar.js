@@ -11,10 +11,9 @@ import useSearch from "../talons/useSearch";
 
 const SearchBar = () => {
   {
-    /**
-  form handling functions from talon
-*/
+    /**form handling functions from talon*/
   }
+
   const { register, handleSubmit, onSubmit } = useSearch();
   return (
     <div className="mb-3">
