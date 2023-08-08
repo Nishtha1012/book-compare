@@ -21,10 +21,6 @@ const Home = ({ books }) => {
   const { handleChange, index } = useIndex();
   return (
     <>
-      <Head>
-        <title>Books | Search</title>
-        <meta name="description" content="Books search app" />
-      </Head>
       {size(books) > 0 ? (
         <>
           {/**filters */}
